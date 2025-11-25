@@ -103,7 +103,7 @@ uvicorn orchestrator_app:app --reload --port 8000
 
 Open your browser at `http://localhost:8501` for the Streamlit UI or `http://127.0.0.1:8000/docs` for the FastAPI docs (if available).
 
-## Cleaned repository tree
+## repository tree
 
 ```text
 MoodNestAI/
@@ -131,5 +131,6 @@ MoodNestAI/
    ├─ architecture.png
    └─ thumbnail.png
 ```
+
 
 
