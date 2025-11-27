@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#a855f7',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        surface: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <meta property="og:title" content="Mental Health Companion">
+    <meta property="og:description" content="Your AI-powered mental health companion">
+    <title>
+        MoodNestAI
+    </title>
+</head>
+
+<body class="bg-darker text-white font-sans h-screen overflow-hidden flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-surface/50 backdrop-blur-lg border-r border-white/10 flex flex-col hidden md:flex">
+        <div class="p-6 border-b border-white/10">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                MoodNestAI
+            </h1>
+            <p class="text-xs text-gray-400 mt-1">Your AI Companion</p>
+        </div>
+
+        <nav class="flex-1 p-4 space-y-2">
+            <button onclick="app.navigate('chat')" id="nav-chat"
+                class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-gray-300 hover:text-white active-nav">
+                <i class="fa-solid fa-comments"></i>
+                <span>Chat</span>
+            </button>
+            <button onclick="app.navigate('analytics')" id="nav-analytics"
+                class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-gray-300 hover:text-white">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Analytics</span>
+            </button>
+            <button onclick="app.navigate('system')" id="nav-system"
+                class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-white/5 text-gray-300 hover:text-white">
+                <i class="fa-solid fa-server"></i>
+                <span>System Health</span>
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-4 py-2">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-sm text-gray-400">System Online</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full relative">
+        <!-- Mobile Header -->
+        <header
+            class="md:hidden p-4 bg-surface/50 backdrop-blur-lg border-b border-white/10 flex justify-between items-center z-20">
+            <h1 class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                MoodNestAI</h1>
+            <button class="text-gray-300"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <!-- Content Area -->
+        <div id="app-content" class="flex-1 overflow-hidden relative">
+            <!-- Views will be injected here -->
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
