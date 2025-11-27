@@ -53,7 +53,7 @@ The system follows a multi-layered architecture with a Flask API gateway orchest
 
 1. **Clone or download the project**
    ```bash
-   git clone https://github.com/mayu2004/moodnestai.git
+   git clone https://github.com/mayurajh2004/MoodNestAI.git
    ```
 
 2. **Install Python dependencies**
@@ -168,3 +168,4 @@ If you're in crisis, please reach out:
 ---
 
 **Note**: This application is a supportive tool and not a replacement for professional mental health care. If you're experiencing a mental health crisis, please contact a qualified healthcare provider or emergency services.
+
