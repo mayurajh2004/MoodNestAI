@@ -4,7 +4,7 @@ A comprehensive Mental Health Companion application featuring a multi-agent AI s
 
 
 [![YouTube](https://img.shields.io/badge/YouTube-Video-red?logo=youtube&logoColor=white)](https://youtu.be/CrzpF_mzJ6o)
-![Status](https://img.shields.io/badge/status-active-success.svg)
+
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
@@ -170,6 +170,7 @@ If you're in crisis, please reach out:
 ---
 
 **Note**: This application is a supportive tool and not a replacement for professional mental health care. If you're experiencing a mental health crisis, please contact a qualified healthcare provider or emergency services.
+
 
 
 
