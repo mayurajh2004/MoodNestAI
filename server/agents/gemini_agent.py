@@ -40,7 +40,7 @@ def generate_response(history, user_input):
         if not API_KEY or API_KEY == "YOUR_API_KEY_HERE":
             return None # Trigger fallback
 
-        model = genai.GenerativeModel(model_name="gemini-1.5-flash", system_instruction=SYSTEM_INSTRUCTION)
+        model = genai.GenerativeModel(model_name="gemini-2.0-flash", system_instruction=SYSTEM_INSTRUCTION)
         
         # Convert history to Gemini format
         chat_history = []

@@ -39,7 +39,7 @@ def generate_plan_fallback(time_of_day, routine):
     plan = f"**{time_of_day} Plan for You**\n\nBased on the time of day, here is a gentle plan:\n\n{routine}\n\n*Remember: Small steps make a big difference.*"
     return plan
 
-def generate_plan(user_mood="neutral"):
+def generate_plan(user_mood="neutral", recent_context=""):
     hour = datetime.datetime.now().hour
     
     # Determine time of day
@@ -60,17 +60,24 @@ def generate_plan(user_mood="neutral"):
             return generate_plan_fallback(time_of_day, fallback_routine)
         
         model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
+            model_name="gemini-2.0-flash",
             system_instruction=SYSTEM_INSTRUCTION
         )
         
         prompt = f"""Create a personalized {time_of_day.lower()} plan for someone who is feeling {user_mood}.
 The current time is {hour}:00.
+
+Recent Chat Context:
+{recent_context}
+
 Provide 3-4 actionable steps that will help them feel better and take care of their mental health.
-Format your response as:
+Format your response as a Markdown table:
 **{time_of_day} Plan for You**
 
-[Your personalized plan here as a numbered list]
+| Time | Activity | Details |
+| :--- | :--- | :--- |
+| [Time] | [Activity Name] | [Brief Description] |
+...
 
 *[Add an encouraging closing message]*
 """

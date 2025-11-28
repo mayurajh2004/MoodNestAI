@@ -68,7 +68,7 @@ def get_strategy(mood="general"):
             return get_strategy_fallback(category)
         
         model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
+            model_name="gemini-2.0-flash",
             system_instruction=SYSTEM_INSTRUCTION
         )
         
@@ -77,9 +77,20 @@ The user's mood description: "{mood}"
 
 Provide ONE specific, actionable coping technique they can use right now.
 Format your response as:
-**Coping Strategy ({category.capitalize()})**
+### 🌿 Coping Strategy: {category.capitalize()}
 
-[Your personalized strategy with clear steps]
+> *[A brief, calming quote or thought related to the strategy]*
+
+**Strategy Name**
+
+[Description of the strategy]
+
+**Steps to Practice:**
+* [Step 1]
+* [Step 2]
+* [Step 3]
+
+*[Optional: Why this helps]*
 """
         
         response = model.generate_content(prompt)

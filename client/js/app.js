@@ -137,7 +137,9 @@ class App {
         const html = `
             <div class="flex ${isUser ? 'justify-end' : 'justify-start'} animate-fade-in">
                 <div class="message-bubble p-4 rounded-2xl ${isUser ? 'bg-primary text-white rounded-tr-none' : 'bg-surface text-gray-200 rounded-tl-none border border-white/5'}">
-                    <p class="leading-relaxed">${text}</p>
+                <div class="leading-relaxed prose prose-invert max-w-none">
+                    ${marked.parse(text)}
+                </div>
                 </div>
             </div>
         `;

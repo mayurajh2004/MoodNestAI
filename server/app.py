@@ -48,8 +48,28 @@ def chat():
 
 @app.route('/api/agent/planner', methods=['POST'])
 def planner():
-    # Generate a plan based on time of day (and optional mood if we had it from req)
-    plan = planner_agent.generate_plan()
+    data = request.json
+    user_id = data.get('user_id', 1)
+    
+    # 1. Analyze recent sentiment
+    sentiment_logs = database.get_sentiment_history(user_id)
+    if sentiment_logs:
+        # Get last 5 logs
+        recent = sentiment_logs[-5:]
+        avg_score = sum(log['score'] for log in recent) / len(recent)
+        
+        if avg_score > 0.3: user_mood = "positive and energetic"
+        elif avg_score < -0.3: user_mood = "feeling down or anxious"
+        else: user_mood = "calm and neutral"
+    else:
+        user_mood = "neutral"
+
+    # 2. Get recent chat context (last 3 messages)
+    history = database.get_chat_history(user_id, limit=3)
+    recent_context = "\n".join([f"{msg['role']}: {msg['content']}" for msg in history])
+
+    # Generate a plan based on real context
+    plan = planner_agent.generate_plan(user_mood, recent_context)
     return jsonify({"response": plan, "source": "planner_agent"})
 
 @app.route('/api/agent/resource', methods=['POST'])
